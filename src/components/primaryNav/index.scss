@@ -1,0 +1,11 @@
+.primary-nav {
+  background-color: var(--color-primary);
+  padding: var(--spacing-4);
+
+  &__title {
+    font-size: var(--fontSize-7);
+    color: var(--color-text-light);
+    line-height: var(--lineHeight-none);
+    text-decoration: none;
+  }
+}
