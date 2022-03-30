@@ -5,12 +5,12 @@ const CurrencyForm = () => {
   return (
     <form className="form">
       <div className="form__group">
-        <label className="form__control" for="input-amount">Amount</label>
-        <input type="number" className="form__input" id="input-amount" placeholder="Amount to convert" defaultValue={1} />
+        <label className="form__control" htmlFor="input-amount">Amount</label>
+        <input type="number" className="form__input" id="input-amount" name="input-amount" placeholder="Amount to convert" defaultValue={1} />
       </div>
       <div className="form__group">
-        <label className="form__control" for="input-currency">Currency</label>
-        <input type="text" className="form__input" id="input-currency" list="input-amount-dl" placeholder="Choose Currency" />
+        <label className="form__control" htmlFor="input-currency">Currency</label>
+        <input type="text" className="form__input" id="input-currency" name="input-currency" list="input-amount-dl" placeholder="Choose Currency" />
         <datalist id="input-amount-dl">
           <option selected value="Chocolate" />
           <option value="Coconut" />

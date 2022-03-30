@@ -3,13 +3,19 @@ import "./index.scss"
 
 const ForexList = () => {
   return (
-    <section>
+    <section className="listing-section">
 
-      <ul>
-        <li>
+      <ul className="forex-list">
+        <li className="forex-list__li">
           ddfsf
         </li>
-        <li>
+        <li className="forex-list__li">
+          ddfsf
+        </li>
+        <li className="forex-list__li">
+          ddfsf
+        </li>
+        <li className="forex-list__li">
           ddfsf
         </li>
       </ul>
