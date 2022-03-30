@@ -1,7 +1,25 @@
-import * as React from "react"
+import React, {useState, useEffect} from "react"
+import axios from 'axios';
 import "./index.scss"
 
 const CurrencyForm = () => {
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () =>{
+      setLoading(true);
+      try {
+        const {data: response} = await axios.get('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json');
+        setData(Object.entries(response));
+      } catch (error) {
+        console.error(error.message);
+      }
+      setLoading(false);
+    }
+    fetchData();
+  }, []); 
+
   return (
     <form className="form">
       <div className="form__group">
@@ -12,11 +30,13 @@ const CurrencyForm = () => {
         <label className="form__control" htmlFor="input-currency">Currency</label>
         <input type="text" className="form__input" id="input-currency" name="input-currency" list="input-amount-dl" placeholder="Choose Currency" />
         <datalist id="input-amount-dl">
-          <option selected value="Chocolate" />
-          <option value="Coconut" />
-          <option value="Mint" />
-          <option value="Strawberry" />
-          <option value="Vanilla" />
+        {!loading && (
+          data.map(currency => (
+            <li className="forex-list__li">
+              <option value={`${currency[0]} - ${currency[1]}`} />
+            </li>
+          ))
+        )}
         </datalist>
       </div>
       <div className="form__group form__group_button">

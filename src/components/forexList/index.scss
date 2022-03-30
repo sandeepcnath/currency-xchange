@@ -1,11 +1,29 @@
 .listing-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   max-width: var(--maxWidth-wrapper);
-  margin: auto;
+  margin: 3rem auto 0;
 }
 
 .forex-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 
   &__li {
-    
+    flex: 1 1 22.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__img {
+    width: 24px;
+  }
+
+  &__short {
+    text-transform: uppercase;
   }
 }

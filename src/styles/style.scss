@@ -109,26 +109,18 @@ p {
 
 ul,
 ol {
-  margin-left: var(--spacing-0);
-  margin-right: var(--spacing-0);
-  padding: var(--spacing-0);
-  margin-bottom: var(--spacing-8);
-  list-style-position: outside;
-  list-style-image: none; 
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
   li {
     padding-left: var(--spacing-0);
-    margin-bottom: calc(var(--spacing-8) / 2);
+    margin-bottom: 0;
 
     > p {
       margin-bottom: calc(var(--spacing-8) / 2);
     }
   }
-}
-
-
-li *:last-child {
-  margin-bottom: var(--spacing-0);
 }
 
 li > ul {
