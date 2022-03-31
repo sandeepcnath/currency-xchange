@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react"
 import axios from 'axios'
+import Select from 'react-select'
 import "./index.scss"
 
-const CurrencyForm = ({value, setVal}) => {
+const CurrencyForm = ({value, setVal, selectedCurrency, setSelectedCurrency}) => {
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState([])
 
@@ -20,7 +21,9 @@ const CurrencyForm = ({value, setVal}) => {
     fetchData();
   }, []); 
 
-  console.log(value, "value")
+  const currencyList = data.map(entry => (
+    {value: entry[0], label: entry[0] + " - " + entry[1]}
+  ))
 
   return (
     <form className="form">
@@ -41,16 +44,9 @@ const CurrencyForm = ({value, setVal}) => {
       </div>
       <div className="form__group">
         <label className="form__control" htmlFor="input-currency">Currency</label>
-        <input type="text" className="form__input" id="input-currency" name="input-currency" list="input-amount-dl" placeholder="Choose Currency" />
-        <datalist id="input-amount-dl">
         {!loading && (
-          data.map(currency => (
-            <li className="forex-list__li">
-              <option value={`${currency[0]} - ${currency[1]}`} />
-            </li>
-          ))
+          <Select className="form__input" options={currencyList} defaultValue={selectedCurrency} onChange={setSelectedCurrency(value)} />
         )}
-        </datalist>
       </div>
       <div className="form__group form__group_button">
         <button>Get Rates</button>
