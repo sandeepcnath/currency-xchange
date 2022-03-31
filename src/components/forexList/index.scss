@@ -8,10 +8,9 @@
 
 .forex-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 360px));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem 3.5rem;
   width: 100%;
-  justify-content: center;
 
   &__li {
     flex: 1 1 22.5rem;
