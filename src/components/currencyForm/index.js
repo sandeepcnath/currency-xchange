@@ -2,10 +2,9 @@ import React, {useState, useEffect} from "react"
 import axios from 'axios'
 import "./index.scss"
 
-const CurrencyForm = () => {
+const CurrencyForm = ({value, setVal}) => {
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState([])
-  const [val, setVal] = useState(1)
 
   useEffect(() => {
     const fetchData = async () =>{
@@ -21,6 +20,8 @@ const CurrencyForm = () => {
     fetchData();
   }, []); 
 
+  console.log(value, "value")
+
   return (
     <form className="form">
       <div className="form__group">
@@ -29,7 +30,7 @@ const CurrencyForm = () => {
         <input
           type="text"
           pattern="[0-9]*"
-          value={val}
+          value={value}
           onChange={(e) =>
             setVal((v) => (e.target.validity.valid ? e.target.value : v))
           }
