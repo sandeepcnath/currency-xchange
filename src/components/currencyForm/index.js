@@ -3,7 +3,7 @@ import axios from 'axios'
 import Select from 'react-select'
 import "./index.scss"
 
-const CurrencyForm = ({value, setVal, selectedCurrency, setSelectedCurrency}) => {
+const CurrencyForm = ({value, setVal, selectedCurrency, setSelectedCurrency, selectedToCurrencies, setSelectedToCurrencies}) => {
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState([])
 
@@ -25,6 +25,9 @@ const CurrencyForm = ({value, setVal, selectedCurrency, setSelectedCurrency}) =>
     {value: entry[0], label: entry[0] + " - " + entry[1]}
   ))
 
+  console.log(currencyList.find(element => element.value == selectedCurrency))
+  console.log(currencyList.findIndex(element => element.value == selectedCurrency))
+
   return (
     <form className="form">
       <div className="form__group">
@@ -43,13 +46,29 @@ const CurrencyForm = ({value, setVal, selectedCurrency, setSelectedCurrency}) =>
         />
       </div>
       <div className="form__group">
-        <label className="form__control" htmlFor="input-currency">Currency</label>
+        <label className="form__control" htmlFor="input-currency">From</label>
         {!loading && (
-          <Select className="form__input" options={currencyList} defaultValue={selectedCurrency} onChange={setSelectedCurrency(value)} />
+          <Select 
+            className="form__input" 
+            id="input-currency" 
+            options={currencyList} 
+            defaultValue={currencyList[currencyList.findIndex(element => element.value == selectedCurrency)]} 
+            onChange={(e) => setSelectedCurrency(e.value)}
+          />
         )}
       </div>
-      <div className="form__group form__group_button">
-        <button>Get Rates</button>
+      <div className="form__group">
+        <label className="form__control" htmlFor="input-to-currency">To</label>
+        {!loading && (
+          <Select 
+            className="form__input" 
+            id="input-to-currency"
+            isMulti 
+            options={currencyList}
+            placeholder="Currencies to convert to"
+            onChange={(e) => setSelectedToCurrencies(e.map(item => item.value))}
+          />
+        )}
       </div>
     </form>
   )

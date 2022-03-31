@@ -1,5 +1,6 @@
 .primary-nav {
-  background-color: var(--color-primary);
+  background: var(--bg-gradient);
+  font-weight: 700;
   padding: var(--spacing-4);
 
   &__title {

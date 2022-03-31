@@ -175,6 +175,12 @@ input {
   padding: .5em .75em;
   border: 1px solid var(--color-accent);
   border-radius: 8px;
+
+  &:focus,
+  &:active {
+    border-color: #02025f;
+    outline: none;
+  }
 }
 
 button {

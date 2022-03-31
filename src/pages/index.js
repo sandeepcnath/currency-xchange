@@ -11,6 +11,7 @@ const IndexPage = () => {
   const [currencyList, setCurrencyList] = useState({})
   const [forexList, setForexList] = useState([])
   const [selectedCurrency, setSelectedCurrency] = useState("usd")
+  const [selectedToCurrencies, setSelectedToCurrencies] = useState([])
 
   useEffect(() => {
     const fetchData = async () =>{
@@ -44,7 +45,7 @@ const IndexPage = () => {
     }
     fetchData();
   }, [selectedCurrency]); 
-  
+
   return (
     <>
       <title>Currency XChange</title>
@@ -61,10 +62,24 @@ const IndexPage = () => {
           setLoading={setLoading} 
           selectedCurrency={selectedCurrency} 
           setSelectedCurrency={setSelectedCurrency} 
+          selectedToCurrencies={selectedToCurrencies}
+          setSelectedToCurrencies={setSelectedToCurrencies}
         />
-        {forexList.length && 
-          <ForexList value={val} forexList={forexList} loading={loading} />
-        }
+        {selectedToCurrencies.length == 0 ? (
+          <ForexList 
+            value={val} 
+            forexList={forexList} 
+            loading={loading} 
+            selectedToCurrencies={selectedToCurrencies} 
+          />
+        ) : (
+          <ForexList 
+            value={val} 
+            forexList={forexList.filter(item =>selectedToCurrencies.indexOf(item.shortForm) !== -1)} 
+            loading={loading} 
+            selectedToCurrencies={selectedToCurrencies} 
+          />
+        )}
       </main>
     </>
   )

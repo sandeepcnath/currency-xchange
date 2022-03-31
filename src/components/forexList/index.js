@@ -1,10 +1,10 @@
 import React from "react"
 import "./index.scss"
 
-const ForexList = ({value, forexList, loading}) => {
+const ForexList = ({value, forexList, selectedToCurrencies}) => {
   return (
     <section className="listing-section">
-
+      {console.log(selectedToCurrencies, "selectedToCurrencies")}
       <ul className="forex-list">
         {forexList && (
           forexList.map(currency => (
@@ -13,7 +13,7 @@ const ForexList = ({value, forexList, loading}) => {
               <span className="forex-list__text">
                 <span className="forex-list__short">{currency.shortForm} - </span>
                 <span className="forex-list__currency">{currency.currency}</span>
-                <span className="forex-list__value">{value == 0 ? currency.value.toFixed(4) : (currency.value * value).toFixed(4) }</span>
+                <span className="forex-list__value">{value == 0 ? currency.value.toFixed(4) : (currency.value * value).toFixed(4)}</span>
               </span>
             </li>
           ))
