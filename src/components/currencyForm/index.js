@@ -26,9 +26,12 @@ const CurrencyForm = ({value, setVal}) => {
     <form className="form">
       <div className="form__group">
         <label className="form__control" htmlFor="input-amount">Amount</label>
-        {/* <input type="number" className="form__input" id="input-amount" name="input-amount" placeholder="Amount to convert" defaultValue={1} /> */}
         <input
           type="text"
+          className="form__input" 
+          id="input-amount" 
+          name="input-amount" 
+          placeholder="Amount to convert" 
           pattern="[0-9]*"
           value={value}
           onChange={(e) =>
