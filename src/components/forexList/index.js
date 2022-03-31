@@ -4,7 +4,6 @@ import "./index.scss"
 const ForexList = ({value, forexList, selectedToCurrencies}) => {
   return (
     <section className="listing-section">
-      {console.log(selectedToCurrencies, "selectedToCurrencies")}
       <ul className="forex-list">
         {forexList && (
           forexList.map(currency => (

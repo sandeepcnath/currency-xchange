@@ -25,9 +25,6 @@ const CurrencyForm = ({value, setVal, selectedCurrency, setSelectedCurrency, sel
     {value: entry[0], label: entry[0] + " - " + entry[1]}
   ))
 
-  console.log(currencyList.find(element => element.value == selectedCurrency))
-  console.log(currencyList.findIndex(element => element.value == selectedCurrency))
-
   return (
     <form className="form">
       <div className="form__group">
